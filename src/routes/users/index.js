@@ -1,8 +1,10 @@
-const users = require("express").Router();
+const express = require("express");
+const Router = express.Router();
 
-users.get("/", (req, res) => {
+Router.get("/", (req, res) => {
   return res.json({
     success: true,
-    message: "list all users",
+    message: "list all usersssss",
   });
 });
+module.exports = Router;
