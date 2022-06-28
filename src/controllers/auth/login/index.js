@@ -1,8 +1,6 @@
-const login = require("express").Router();
-
-login.get("/", (req, res) => {
+exports.getLogin = (req, res) => {
   return res.json({
     success: true,
-    message: "this is login",
+    message: "Login page",
   });
-});
+};

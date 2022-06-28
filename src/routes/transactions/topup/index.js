@@ -1,10 +1,6 @@
 const express = require("express");
 const Router = express.Router();
+const topupController = require("../../../controllers/transactions/topup");
 
-Router.get("/", (req, res) => {
-  return res.json({
-    success: true,
-    message: "topup page",
-  });
-});
+Router.get("/", topupController.getTopUp);
 module.exports = Router;

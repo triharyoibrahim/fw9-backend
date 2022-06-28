@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const routerNavigation = require("./src/routes");
 
 app.use(express.urlencoded({ extended: false }));
 
@@ -11,7 +10,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/", routerNavigation);
+app.use("/", require("./src/routes"));
 
 app.use("*", (req, res) => {
   return res.status(404).json({

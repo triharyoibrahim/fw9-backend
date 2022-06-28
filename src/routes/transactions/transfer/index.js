@@ -1,10 +1,6 @@
 const express = require("express");
 const Router = express.Router();
+const transferController = require("../../../controllers/transactions/transfer");
 
-Router.get("/", (req, res) => {
-  return res.json({
-    success: true,
-    message: "transfer page",
-  });
-});
+Router.get("/", transferController.getTransfer);
 module.exports = Router;

@@ -1,10 +1,6 @@
 const express = require("express");
 const Router = express.Router();
+const createpinController = require("../../../controllers/auth/createpin");
 
-Router.get("/", (req, res) => {
-  return res.json({
-    success: true,
-    message: "create pin page",
-  });
-});
+Router.get("/", createpinController.getCreatePin);
 module.exports = Router;

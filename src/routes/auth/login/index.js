@@ -1,10 +1,6 @@
 const express = require("express");
 const Router = express.Router();
+const loginController = require("../../../controllers/auth/login");
 
-Router.get("/", (req, res) => {
-  return res.json({
-    success: true,
-    message: "login page",
-  });
-});
+Router.get("/", loginController.getLogin);
 module.exports = Router;
