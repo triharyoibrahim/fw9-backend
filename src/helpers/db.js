@@ -1,10 +1,6 @@
 const { Pool } = require("pg");
+const { DATABASE_URL: connectionString } = process.env;
 
-const db = new Pool({
-  host: process.env.PG_HOST,
-  user: process.env.PG_USER,
-  password: process.env.PG_PASSWORD,
-  database: process.env.PG_DATABASE,
-});
+const db = new Pool({ connectionString });
 
 module.exports = db;
