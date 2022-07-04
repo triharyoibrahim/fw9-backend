@@ -11,8 +11,7 @@ exports.getDetailUsers = (id, cb) => {
   const val = [id];
 
   db.query(q, val, (err, res) => {
-    // console.log(err);
-    cb(res.rows);
+    cb(err, res);
   });
 };
 

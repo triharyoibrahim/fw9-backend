@@ -1,17 +1,18 @@
 const response = require("../../helpers/standardResponse");
-const usersModel = require("../../models/users");
+const transactionModel = require("../../models/transactions");
 const { validationResult } = require("express-validator");
 
-exports.getAllUsers = (req, res) => {
-  usersModel.getAllUsers((results) => {
+exports.getAllTransaction = (req, res) => {
+  transactionModel.getAllTransaction((results) => {
     return response(res, "Success get data", results);
   });
 };
 
-exports.getDetailUsers = (req, res) => {
+exports.getDetailTransaction = (req, res) => {
   const { id } = req.params;
 
-  usersModel.getDetailUsers(id, (err, results) => {
+  transactionModel.getDetailTransaction(id, (err, results) => {
+    // console.log(results);
     if (results.rows.length > 0) {
       return response(res, `Success get data by id : ${id}`, results.rows[0]);
     } else {
@@ -20,21 +21,22 @@ exports.getDetailUsers = (req, res) => {
   });
 };
 
-exports.createUsers = (req, res) => {
+exports.createTransaction = (req, res) => {
   const validation = validationResult(req);
   if (!validation.isEmpty()) {
     return response(res, "Please fill data correctly", validation.array(), 400);
   }
-  usersModel.createUsers(req.body, (results) => {
-    return response(res, "Create user successfully", results[0]);
+  transactionModel.createTransaction(req.body, (results) => {
+    return response(res, "Transaction successfully", results[0]);
   });
 };
 
-exports.updateUsers = (req, res) => {
+exports.updateTransaction = (req, res) => {
   const { id } = req.params;
   const validation = validationResult(req);
 
-  usersModel.updateUsers(id, req.body, (results) => {
+  transactionModel.updateTransaction(id, req.body, (results) => {
+    // console.log(results);
     if (!validation.isEmpty()) {
       return response(
         res,
@@ -43,12 +45,12 @@ exports.updateUsers = (req, res) => {
         400
       );
     }
-    // console.log(results);
-    if (results.length > 0) {
+
+    if (results.rows.length > 0) {
       return response(
         res,
         `Update data user id : ${id} successfully`,
-        results[0]
+        results.rows[0]
       );
     } else {
       return response(res, `data user id : ${id} not found`, null, 404);
@@ -56,10 +58,11 @@ exports.updateUsers = (req, res) => {
   });
 };
 
-exports.deleteUsers = (req, res) => {
+exports.deleteTransaction = (req, res) => {
   const { id } = req.params;
 
-  usersModel.deleteUsers(id, (results) => {
+  transactionModel.deleteTransaction(id, (results) => {
+    console.log(results);
     if (results.rows.length > 0) {
       return response(res, `Success deleted data by id : ${id}`, null);
     } else {
