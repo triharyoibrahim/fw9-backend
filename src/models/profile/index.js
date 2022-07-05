@@ -1,9 +1,12 @@
 const db = require("../../helpers/db");
 
-exports.getAllProfile = (cb) => {
-  db.query("SELECT * FROM profile", (err, res) => {
-    cb(res.rows);
-  });
+exports.getAllProfile = (keyword, cb) => {
+  db.query(
+    `SELECT * FROM profile WHERE fullname LIKE \'%${keyword}%'\ ORDER BY id ASC`,
+    (err, res) => {
+      cb(err, res.rows);
+    }
+  );
 };
 
 exports.getDetailProfile = (id, cb) => {

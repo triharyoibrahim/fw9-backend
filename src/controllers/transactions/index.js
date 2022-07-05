@@ -62,7 +62,7 @@ exports.deleteTransaction = (req, res) => {
   const { id } = req.params;
 
   transactionModel.deleteTransaction(id, (results) => {
-    console.log(results);
+    // console.log(results);
     if (results.rows.length > 0) {
       return response(res, `Success deleted data by id : ${id}`, null);
     } else {

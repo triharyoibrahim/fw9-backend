@@ -17,8 +17,9 @@ const validation = [
     .isLength({ min: 4 })
     .withMessage("Please input username mininum 4 character"),
 ];
+const limit = [body("limit").toInt(), body("page").toInt()];
 
-Router.get("/", userController.getAllUsers);
+Router.get("/", limit, userController.getAllUsers);
 Router.get("/:id", userController.getDetailUsers);
 Router.post("/", validation, userController.createUsers);
 Router.patch("/:id", validation, userController.updateUsers);

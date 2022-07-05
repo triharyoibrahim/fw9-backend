@@ -3,7 +3,8 @@ const profileModel = require("../../models/profile");
 const { validationResult } = require("express-validator");
 
 exports.getAllProfile = (req, res) => {
-  profileModel.getAllProfile((results) => {
+  const { search = "" } = req.query;
+  profileModel.getAllProfile(search, (err, results) => {
     return response(res, "Success get data", results);
   });
 };

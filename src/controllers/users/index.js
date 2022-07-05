@@ -1,10 +1,19 @@
 const response = require("../../helpers/standardResponse");
 const usersModel = require("../../models/users");
 const { validationResult } = require("express-validator");
+const { LIMIT_DATA } = process.env;
 
 exports.getAllUsers = (req, res) => {
-  usersModel.getAllUsers((results) => {
-    return response(res, "Success get data", results);
+  const { search = "", limit = parseInt(LIMIT_DATA), page = 1 } = req.query;
+  const offset = (page - 1) * limit;
+
+  usersModel.getAllUsers(search, limit, offset, (err, results) => {
+    // console.log(err);
+    if (results.length < 1) {
+      return response(res, "Data not found", null, 404);
+    } else {
+      return response(res, "get all data", results);
+    }
   });
 };
 
