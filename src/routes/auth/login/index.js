@@ -7,5 +7,5 @@ const validation = [
   body("email").isEmail().withMessage("Please input format email correctly"),
 ];
 
-Router.post("/", validation, loginController.login);
+Router.post("/login", validation, loginController.login);
 module.exports = Router;

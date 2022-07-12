@@ -66,6 +66,7 @@ exports.createUsers = (req, res) => {
     );
   }
   usersModel.createUsers(req.body, (err, results) => {
+    // console.log(results);
     return response(res, "Create user successfully", results.rows[0]);
   });
 };
@@ -74,7 +75,8 @@ exports.updateUsers = (req, res) => {
   const { id } = req.params;
   const validation = validationResult(req);
 
-  usersModel.updateUsers(id, req.body, (results) => {
+  usersModel.updateUsers(id, req.body, (err, results) => {
+    // console.log(results);
     if (!validation.isEmpty()) {
       return response(
         res,
@@ -84,12 +86,12 @@ exports.updateUsers = (req, res) => {
         400
       );
     }
-    // console.log(results);
-    if (results.length > 0) {
+
+    if (results.rows.length > 0) {
       return response(
         res,
         `Update data user id : ${id} successfully`,
-        results[0]
+        results.rows[0]
       );
     } else {
       return response(res, `data user id : ${id} not found`, null, 404);

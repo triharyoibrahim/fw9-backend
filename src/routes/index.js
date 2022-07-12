@@ -2,8 +2,9 @@ const express = require("express");
 const Router = express.Router();
 
 //Auth
-Router.use("/login", require("./auth/login"));
-Router.use("/signup", require("./auth/signup"));
+Router.use("/auth/", require("./auth/login"));
+Router.use("/auth/", require("./auth/signup"));
+Router.use("/auth/", require("./auth/createpin"));
 
 //Home
 Router.use("/home", require("../routes/home"));
