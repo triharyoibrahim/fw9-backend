@@ -2,6 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
+global.__basepath = __dirname;
+
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {

@@ -1,0 +1,580 @@
+{
+	"info": {
+		"_postman_id": "b310eeab-1e56-4088-9873-2134390798c6",
+		"name": "Backend Zwallet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20156383"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "tes",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Home",
+			"item": [
+				{
+					"name": "Get All Transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Get All Transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"transaction"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "2000",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail Transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/transaction/26",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"transaction",
+								"26"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "amount",
+									"value": "2000",
+									"type": "text"
+								},
+								{
+									"key": "recipient_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "sender_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "notes",
+									"value": "zzzzz",
+									"type": "text"
+								},
+								{
+									"key": "time",
+									"value": "2022-09-30",
+									"type": "text"
+								},
+								{
+									"key": "type_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Transaction",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "amount",
+									"value": "100000",
+									"type": "text"
+								},
+								{
+									"key": "recipient_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "sender_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "notes",
+									"value": "aaaa",
+									"type": "text"
+								},
+								{
+									"key": "time",
+									"value": "2022-12-31",
+									"type": "text"
+								},
+								{
+									"key": "type_id",
+									"value": "9",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/transaction/26",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"transaction",
+								"26"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Transaction",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/transaction/25",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"transaction",
+								"25"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/users?search=tes&limit=3",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "tes"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/users/19",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"users",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "cekkk@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1212",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "coba",
+									"type": "text"
+								},
+								{
+									"key": "pin",
+									"value": "321",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Users",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "huhh@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1441",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "ganti",
+									"type": "text"
+								},
+								{
+									"key": "pin",
+									"value": "321",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/users/220",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"users",
+								"220"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Users",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/users/13",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"users",
+								"13"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Get All Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/profile?search=te",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"profile"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "te"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/profile/14",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"profile",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fullname",
+									"value": "tes",
+									"type": "text"
+								},
+								{
+									"key": "phonenumber",
+									"value": "08112121313",
+									"type": "text"
+								},
+								{
+									"key": "balance",
+									"value": "2000",
+									"type": "text"
+								},
+								{
+									"key": "picture",
+									"value": "gambar",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "coba666@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234555555555",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "coba2",
+									"type": "text"
+								},
+								{
+									"key": "pin",
+									"value": "321",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/profile?fullname=caa@mail.com&phonenumber=1234&balance=coba2&picture=321",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"profile"
+							],
+							"query": [
+								{
+									"key": "fullname",
+									"value": "caa@mail.com"
+								},
+								{
+									"key": "phonenumber",
+									"value": "1234"
+								},
+								{
+									"key": "balance",
+									"value": "coba2"
+								},
+								{
+									"key": "picture",
+									"value": "321"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Profile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/profile/14",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"profile",
+								"14"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -3,15 +3,26 @@ const { LIMIT_DATA } = process.env;
 
 exports.getAllUsers = (
   keyword,
+  sortby,
+  sort,
   limit = parseInt(LIMIT_DATA),
   offset = 0,
   cb
 ) => {
   db.query(
-    `SELECT * FROM users WHERE email LIKE \'%${keyword}%'\ ORDER BY id ASC LIMIT $1 OFFSET $2`,
+    `SELECT * FROM users WHERE email LIKE \'%${keyword}%'\ ORDER BY ${sortby} ${sort} LIMIT $1 OFFSET $2`,
     [limit, offset],
     (err, res) => {
       cb(err, res.rows);
+    }
+  );
+};
+
+exports.countAllUsers = (keyword, cb) => {
+  db.query(
+    `SELECT * FROM users WHERE email LIKE \'%${keyword}%'\ `,
+    (err, res) => {
+      cb(err, res.rowCount);
     }
   );
 };
@@ -31,7 +42,7 @@ exports.createUsers = (data, cb) => {
   const val = [data.email, data.password, data.username, data.pin];
   db.query(q, val, (err, res) => {
     // console.log(res);
-    cb(res.rows);
+    cb(res);
   });
 };
 
@@ -50,6 +61,6 @@ exports.deleteUsers = (id, cb) => {
   const val = [id];
 
   db.query(q, val, (err, res) => {
-    cb(res);
+    cb(err, res);
   });
 };

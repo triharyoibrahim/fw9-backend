@@ -16,6 +16,11 @@ const validation = [
   body("username")
     .isLength({ min: 4 })
     .withMessage("Please input username mininum 4 character"),
+  body("pin")
+    .isLength({ min: 6, max: 6 })
+    .withMessage("Please input 6 digit pin")
+    .isNumeric()
+    .withMessage("Please input number only"),
 ];
 const limit = [body("limit").toInt(), body("page").toInt()];
 
