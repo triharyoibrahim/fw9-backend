@@ -2,7 +2,7 @@ const express = require("express");
 const Router = express.Router();
 const createPinController = require("../../../controllers/auth/createpin");
 const { body } = require("express-validator");
-const authMiddleware = require("../../middleware/auth");
+const authMiddleware = require("../../../middleware/auth");
 
 const validation = [
   body("email").isEmail().withMessage("Please input format email correctly"),

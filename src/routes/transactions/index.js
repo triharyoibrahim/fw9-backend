@@ -2,6 +2,7 @@ const express = require("express");
 const Router = express.Router();
 const transactionController = require("../../controllers/transactions");
 const { body } = require("express-validator");
+const authMiddleware = require("../../middleware/auth");
 
 const validation = [
   body("time")
@@ -10,8 +11,8 @@ const validation = [
   body("amount").isNumeric().withMessage("Please input amount correctly"),
 ];
 
-Router.get("/", transactionController.getAllTransaction);
-Router.get("/:id", transactionController.getDetailTransaction);
+Router.get("/", authMiddleware, transactionController.getAllTransaction);
+Router.get("/:id", authMiddleware, transactionController.getDetailTransaction);
 Router.post("/", validation, transactionController.createTransaction);
 Router.patch("/:id", validation, transactionController.updateTransaction);
 Router.delete("/:id", transactionController.deleteTransaction);

@@ -48,7 +48,7 @@ exports.getDetailProfile = (req, res) => {
 
   profileModel.getDetailProfile(id, (err, results) => {
     console.log(results);
-    if (results.rows.length > 0) {
+    if (results.length > 0) {
       return response(res, `Success get data by id : ${id}`, results.rows);
     } else {
       return response(res, `data by id : ${id} not found`, null, 404);

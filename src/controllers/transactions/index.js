@@ -52,8 +52,8 @@ exports.getDetailTransaction = (req, res) => {
   const { id } = req.params;
 
   transactionModel.getDetailTransaction(id, (err, results) => {
-    // console.log(results);
-    if (results.rows.length > 0) {
+    console.log(err);
+    if (results.length > 0) {
       return response(res, `Success get data by id : ${id}`, results.rows[0]);
     } else {
       return response(res, `data by id : ${id} not found`, null, 404);

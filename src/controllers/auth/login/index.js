@@ -3,6 +3,7 @@ const loginModel = require("../../../models/auth/login");
 const userModel = require("../../../models/users");
 const { validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 exports.login = (req, res) => {
   const validation = validationResult(req);

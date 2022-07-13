@@ -4,6 +4,7 @@ const profileController = require("../../controllers/profile");
 const { body } = require("express-validator");
 const uploadProfile = require("../../middleware/uploadProfile");
 const checkId = require("../../middleware/checkId");
+const authMiddleware = require("../../middleware/auth");
 
 const validation = [
   body("phonenumber")
@@ -17,15 +18,9 @@ const validation = [
 ];
 
 Router.get("/", profileController.getAllProfile);
-Router.get("/:id", profileController.getDetailProfile);
+Router.get("/:id", authMiddleware, profileController.getDetailProfile);
 Router.post("/", validation, profileController.createProfile);
-Router.patch(
-  "/:id",
-  checkId,
-  uploadProfile,
-  validation,
-  profileController.updateProfile
-);
+Router.patch("/:id", checkId, validation, profileController.updateProfile);
 Router.delete("/:id", profileController.deleteProfile);
 
 module.exports = Router;

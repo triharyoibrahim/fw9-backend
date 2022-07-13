@@ -3,6 +3,7 @@ const Router = express.Router();
 const userController = require("../../controllers/users");
 const { body } = require("express-validator");
 const bcrypt = require("bcrypt");
+const authMiddleware = require("../../middleware/auth");
 
 const validation = [
   body("email").isEmail().withMessage("Please input format email correctly"),
@@ -24,10 +25,10 @@ const validation = [
 ];
 const limit = [body("limit").toInt(), body("page").toInt()];
 
-Router.get("/", limit, userController.getAllUsers);
-Router.get("/:id", userController.getDetailUsers);
-Router.post("/", validation, userController.createUsers);
-Router.patch("/:id", validation, userController.updateUsers);
-Router.delete("/:id", userController.deleteUsers);
+Router.get("/", authMiddleware, limit, userController.getAllUsers);
+Router.get("/:id", authMiddleware, userController.getDetailUsers);
+Router.post("/", authMiddleware, validation, userController.createUsers);
+Router.patch("/:id", authMiddleware, validation, userController.updateUsers);
+Router.delete("/:id", authMiddleware, userController.deleteUsers);
 
 module.exports = Router;
