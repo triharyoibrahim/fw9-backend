@@ -18,4 +18,7 @@ Router.use("/users", require("./users"));
 //Profile
 Router.use("/profile", require("./profile"));
 
+//Transfer
+Router.use("/transfer", require("./transfer"));
+
 module.exports = Router;

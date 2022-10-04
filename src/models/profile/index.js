@@ -38,6 +38,19 @@ exports.getDetailProfile = (id, cb) => {
   });
 };
 
+exports.getDetailProfileByUserId = (user_id, cb)=>{
+  const q = 'SELECT * FROM profile WHERE user_id=$1';
+  const val = [user_id];
+  db.query(q, val, (err, res)=>{
+    if (res) {
+      cb(err, res);
+    }else{
+      cb(err);
+    }
+  });
+};
+
+
 exports.createProfile = (data, cb) => {
   //   console.log(data);
   const q =

@@ -8,11 +8,13 @@ const authMiddleware = require("../../middleware/auth");
 
 const validation = [
   body("phonenumber")
+    .notEmpty().withMessage("Please input your phone number")
     .isLength({ min: 11 })
     .withMessage("Please input phone number correctly (min 11 digit)")
     .isNumeric()
     .withMessage("Please input number only"),
   body("fullname")
+    .notEmpty().withMessage("Please input your phone number")
     .isLength({ min: 2 })
     .withMessage("Please input your fullname correctly"),
 ];
